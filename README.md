@@ -21,6 +21,7 @@ optional arguments:
               Will be asked for, if not specified.
   -t          Plot theta in the process of conversion.
   -f          Plot phi in the process of conversion.
+  -i title    Plot title.
   -n          Do not write output file. Might be useful for plotting.
 
 Written by Jan Havránek in 2018

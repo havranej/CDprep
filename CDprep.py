@@ -54,12 +54,13 @@ def write_file(wlength, phi, path):
 		for l, p in zip(wlength, phi):
 			f.write("{0} {1}\n".format(l, round(p, 6)))
 
-def display_plot(x, y, xlab="Lambda", ylab="Theta"):
+def display_plot(x, y, xlab="Lambda", ylab="Theta", title=None):
 	plt.axhline(0, color='red')
 	plt.plot(x, y)
 	plt.xlabel(xlab)
 	plt.ylabel(ylab)
 	plt.subplots_adjust(left=0.15)
+	plt.title(title)
 	plt.show()
 
 def get_args():
@@ -71,6 +72,7 @@ def get_args():
 																  and cuvette light path [cm]. Will be asked for, if not specified.")
 	parser.add_argument("-t", action="store_true", help="Plot theta in the process of conversion.")
 	parser.add_argument("-f", action="store_true", help="Plot phi in the process of conversion.")
+	parser.add_argument("-i", metavar="title", help="Plot title.")
 	parser.add_argument("-n", action="store_true", help="Do not write output file. Might be useful for plotting.")
 
 	args = parser.parse_args()
@@ -87,8 +89,8 @@ def transform_file():
 		if not plot_present:
 			print("[!] Matplotlib module required for plotting!")
 		else:
-			if args["t"]: display_plot(lmbd, theta)
-			if args["f"]: display_plot(lmbd, phi, ylab="Phi")
+			if args["t"]: display_plot(lmbd, theta, title=args["i"])
+			if args["f"]: display_plot(lmbd, phi, ylab="Phi", title=args["i"])
 	if not args["n"]: write_file(lmbd, theta, out_file)
 
 

@@ -1,0 +1,6 @@
+# This is a sample batch file for CDPrep
+# Lines with # at the beginning are not parsed by the program
+# Columns can be separated by any whitespace
+# Input 		Output		c 	M 	n 	d 	
+filename.txt	out.txt		0.1	100	10	0.2	
+filename2.txt	out2.txt	0.1	100	10	0.2 

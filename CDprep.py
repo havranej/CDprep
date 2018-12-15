@@ -124,15 +124,16 @@ def process_tasks(tasks, args):
 def get_args():
 	parser = argparse.ArgumentParser(description='Preparation of files for CDPro. Converts units to molar ellipticity and may produce some plots in the process.',
 									 epilog="Written by Jan Havránek in 2018")
+	plotting_group = parser.add_argument_group('plotting')
 	parser.add_argument("infile", nargs="?", default=None, help="Input file. Will be asked for, if not specified.")
 	parser.add_argument("-o", metavar="outfile", help="Output file. Set to default, if not specified.")
 	parser.add_argument("-b", metavar="file", help="Batch file. Overrides some of the console arguments (-i, -o, -p and -n).")
 	parser.add_argument("-p", metavar=("c", "M", "n", "d"), nargs=4, type=float, help="Mesurement parameters - mass concentration [g/l], molar mass [g/mol], number of amino acids,\
 																  and cuvette light path [cm]. Will be asked for, if not specified.")
-	parser.add_argument("-t", action="store_true", help="Plot theta in the process of conversion.")
-	parser.add_argument("-f", action="store_true", help="Plot phi in the process of conversion.")
-	parser.add_argument("-l", metavar="title", help="Plot title.")
-	parser.add_argument("-n", action="store_true", help="Do not write output file. Might be useful for plotting.")
+	plotting_group.add_argument("-t", action="store_true", help="Plot theta in the process of conversion.")
+	plotting_group.add_argument("-f", action="store_true", help="Plot phi in the process of conversion.")
+	plotting_group.add_argument("-l", metavar="title", help="Plot title.")
+	plotting_group.add_argument("-n", action="store_true", help="Do not write output file. Might be useful for plotting.")
 
 	args = parser.parse_args()
 	return vars(args)
@@ -142,25 +143,6 @@ def guide_transformation():
 	args = get_args()
 	tasks = get_tasks(args)
 	process_tasks(tasks, args)
-	return
-
-	# in_file = get_infile_name() if args["infile"] is None else args["infile"]
-	# lmbd, phi = parse_file(in_file)
-
-	# c, M, n, d = ask_parameters() if args["p"] is None else args["p"]
-	
-	# if not args["n"]: out_file = get_outfile_name(in_file) if args["o"] is None else args["o"]
-	
-	# theta = convert(phi, c, M, n, d)
-	
-	# if args["t"] or args["f"]:
-	# 	if not plot_present:
-	# 		print("[!] Matplotlib module required for plotting!")
-	# 	else:
-	# 		if args["t"]: display_plot(lmbd, theta, title=args["l"])
-	# 		if args["f"]: display_plot(lmbd, phi, ylab="Phi", title=args["l"])
-
-	# if not args["n"]: write_file(lmbd, theta, out_file)
 
 
 if __name__ == "__main__":
@@ -173,9 +155,3 @@ if __name__ == "__main__":
 		print(f"[!] {e}")
 	else:
 		print("Process finished successfully")
-
-	# try:
-	# 	input("\nPress enter to quit")
-	# except:
-	# 	pass
-

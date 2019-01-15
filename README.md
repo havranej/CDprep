@@ -1,7 +1,11 @@
 # CDprep
 Preparation of files for CDPro. 
 
-**Manual check of output files is highly recommended**
+Takes a file with results of a CD experiment and does some unit conversion and formatting on it. File on the input is expected to have at lest two columns of data – first one with wavelengths in nm, second one with CD values in millidegrees. The rest of the columns (such as voltage), as well as lines starting with characters instead of digits, are omitted. Output can be formatted either as two-column list of molar ellipticity values (normalised by the number of amino acids), which can be later processed by CRDATA, or directly as a CDPro INPUT file with data converted to delta(e).
+
+**Manual check of output files is highly recommended!**
+
+To launch CDprep on Windows, type `py CDprep.py [optional arguments]` into command line. Type `py CDprep.py -h` in order to display help (or you can read it below).
 
 ```
 > py CDprep.py -h
@@ -49,7 +53,7 @@ When `-c` is not given, pairs of values (wavelength - molar ellipticity) are wri
 
 
 ## On batch files
-Multiple files can be easily processed with the use of batch files. See sample_batch.txt file for more details on their formatting.
+Multiple files can be easily processed with the use of batch files. See [sample_batch.txt](sample_batch.txt) file for more details on their formatting.
 
 
 ## On IBasis numbers

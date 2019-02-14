@@ -1,7 +1,7 @@
 # CDprep
-Preparation of files for CDPro. 
+Preparation of circular dichroism files for CDPro. 
 
-Takes a file with results of a CD experiment and does some unit conversion and formatting on it. File on the input is expected to have at lest two columns of data – first one with wavelengths in nm, second one with CD values in millidegrees. The rest of the columns (such as voltage), as well as lines starting with characters instead of digits, are omitted. Output can be formatted either as two-column list of molar ellipticity values (normalised by the number of amino acids), which can be later processed by CRDATA, or directly as a CDPro INPUT file with data converted to delta(e).
+Takes a file (files) with results of a circular dichroism experiment and does some unit conversion and formatting on it. File on the input is expected to have at lest two columns of data – first one with wavelengths in nm, second one with CD values in millidegrees. The rest of the columns (such as voltage), as well as lines starting with characters instead of digits, are omitted. Output can be formatted either as two-column list of molar ellipticity values (normalised by the number of amino acids), which can be later processed by CRDATA, or directly as a CDPro INPUT file with data converted to delta(e).
 
 **Manual check of output files is highly recommended!**
 

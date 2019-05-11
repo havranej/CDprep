@@ -103,7 +103,7 @@ def parse_batch_file(path):
 
 
 def convert(phi, c, M, n, d):
-	return list(map(lambda x: x * M / (10 * c * d * n), phi))
+	return [x * M / (10 * c * d * n) for x in phi]
 
 
 def write_file(wlength, theta, path):
